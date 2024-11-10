@@ -6,15 +6,11 @@ import 'package:freefeos/freefeos.dart';
 /// 应用入口
 /// 需使用异步
 Future<void> main() async {
-  // 初始化运行器
-  final launch = FreeFEOSLauncher(
-    runner: (app) async => runApp(app),
+  // 使用运行器启动应用
+  await FreeFEOSLauncher(
     plugins: <FreeFEOSPlugin>[CountdownPlugin()],
     initApi: (exec) async => Global.exec = exec,
-    enabled: true,
-  );
-  // 使用运行器启动应用
-  await launch(const MyApp());
+  )(const MyApp());
 }
 
 /// Global全局类
